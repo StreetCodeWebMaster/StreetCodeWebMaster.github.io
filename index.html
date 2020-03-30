@@ -85,17 +85,17 @@ function makeCode () {
 	URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
 	qrcode.makeCode(URL);
 }
-
-makeCode();
-
-$("#text").
-	on("blur", function () {
-		makeCode();
-	}).
-	on("keydown", function (e) {
-		if (e.keyCode == 13) {
-			makeCode();
-		}
-	});
+//
+// makeCode();
+//
+// $("#text").
+// 	on("blur", function () {
+// 		makeCode();
+// 	}).
+// 	on("keydown", function (e) {
+// 		if (e.keyCode == 13) {
+// 			makeCode();
+// 		}
+// 	});
 </script>
 </body>
