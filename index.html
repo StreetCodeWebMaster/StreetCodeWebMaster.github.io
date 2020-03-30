@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<title>Cross-Browser QRCode generator for Javascript</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="qrcode.js"></script>
+</head>
+<body>
+<label for="staffEmail"> Staff Email: </label>
+<input id="staffEmail" type="email" placeholder="Staff Email" style="width:10%" /><br />
+<label for="laptopNumber"> Laptop Being Checked Out: </label>
+<input id="laptopNumber" type="text" placeholder="Laptop Being Checked Out" style="width:10%" /><br />
+<label for="firstName"> First Name: </label>
+<input id="firstName" type="text" placeholder="First Name" style="width:10%" /><br />
+<label for="lastName"> Last Name: </label>
+<input id="lastName" type="text" placeholder="Last Name" style="width:10%" /><br />
+<label for="checkOutDate"> Checkout Date: </label>
+<input id="checkOutDate" type="date" style="width:10%" /><br />
+<label for="checkInDate"> Checkin Date: </label>
+<input id="checkInDate" type="date" style="width:10%" /><br />
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 100,
+	height : 100
+});
+
+function makeCode () {
+	var staffText = document.getElementById("staffEmail");
+	var laptopText = document.getElementById("laptopNumber");
+	var firstText = document.getElementById("firstName");
+	var lastText = document.getElementById("lastName");
+	var inDate = document.getElementById("checkInDate");
+	var outDate = document.getElementById("checkOutDate");
+	var googleFormStartURL = "https://docs.google.com/forms/d/e/1FAIpQLSdN8NGZDQGstowSQnmFNgQMwEhvJtZY33uMwDpkujZf9NkfCw/formResponse?usp=pp_url&entry.880128156=";
+	var laptopFormURL = "&entry.458668427=";
+	var firstFormURL = "&entry.1820934801=";
+	var lastFormURL = "&entry.1967109888=";
+	var outFormURL = "&entry.714144443=";
+	var inFormURL = "&entry.866613584=";
+
+	// if (!staffText.value) {
+	// 	alert("Input your staff email");
+	// 	staffText.focus();
+	// 	return;
+	// }
+	//
+	// if (!laptopText.value) {
+	// 	alert("Input a laptop");
+	// 	firstText.focus();
+	// 	return;
+	// }
+	//
+	// if (!firstText.value) {
+	// 	alert("Input a first name");
+	// 	firstText.focus();
+	// 	return;
+	// }
+	//
+	// if (!lastText.value) {
+	// 	alert("Input a last name");
+	// 	lastText.focus();
+	// 	return;
+	// }
+	//
+	// if (!outText.value) {
+	// 	alert("Input a checkout date");
+	// 	outText.focus();
+	// 	return;
+	// }
+	//
+	// if (!inText.value) {
+	// 	alert("Input a checkin date");
+	// 	inText.focus();
+	// 	return;
+	// }
+	var URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
+	qrcode.makeCode(URL);
+}
+
+makeCode();
+
+$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+</script>
+</body>
