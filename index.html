@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="qrcode.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 <label for="staffEmail"> Staff Email: </label>
@@ -21,6 +22,7 @@
 <label for="checkInDate"> Checkin Date: </label>
 <input id="checkInDate" type="date" style="width:10%" /><br />
 <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+<div id="URL"></div>
 
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -77,7 +79,8 @@ function makeCode () {
 	// 	inText.focus();
 	// 	return;
 	// }
-	var URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
+	var URL = document.getElementById("URL");
+	URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
 	qrcode.makeCode(URL);
 }
 
