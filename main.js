@@ -23,7 +23,7 @@ function genhash(){
 }
 
 function shorturl(url){
-  var longurl = geturl();
+  var longurl = geturl(url);
   genhash();
   send_request(longurl);
   return longurl;

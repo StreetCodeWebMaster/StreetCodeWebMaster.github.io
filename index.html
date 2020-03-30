@@ -24,8 +24,6 @@
 <button type="button" onclick="makeCode()">Short The URL</button>
 <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
 
-<div id="URL"></div>
-
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 100,
@@ -81,11 +79,12 @@ function makeCode () {
 	// 	inText.focus();
 	// 	return;
 	// }
-	var URL = document.getElementById("URL");
-	URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
+	var URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
+	//alert(URL);
 	var shortURL = shorturl(URL);
+	alert(shortURL);
 	qrcode.makeCode(shortURL);
-}
+}s
 //
 // makeCode();
 //
