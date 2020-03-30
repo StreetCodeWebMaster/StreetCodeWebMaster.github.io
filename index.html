@@ -83,8 +83,8 @@ function makeCode () {
 	// }
 	var URL = document.getElementById("URL");
 	URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
-	
-	qrcode.makeCode(URL);
+	var shortURL = shorturl(URL);
+	qrcode.makeCode(shortURL);
 }
 //
 // makeCode();
