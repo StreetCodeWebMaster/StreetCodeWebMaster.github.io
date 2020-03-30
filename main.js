@@ -16,17 +16,18 @@ function geturl(url){
   }
 }
 
-// function genhash(){
-//   if (window.location.hash == “”){
-//     window.location.hash = getrandom();
-//   }
-// }
+function genhash(){
+  if (window.location.hash == “”){
+    window.location.hash = getrandom();
+  }
+}
 
 function shorturl(url){
   var longurl = geturl(url);
-  //genhash();
+  genhash();
   send_request(longurl);
-  return longurl;
+  alert("Test: " + longurl)
+  return longurl.value;
 }
 
 function send_request(url) {

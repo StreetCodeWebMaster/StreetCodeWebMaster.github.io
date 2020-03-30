@@ -80,10 +80,10 @@ function makeCode () {
 	// 	return;
 	// }
 	var URL = googleFormStartURL.concat(staffText.value, laptopFormURL, laptopText.value, firstFormURL, firstText.value, lastFormURL, lastText.value, outFormURL, outDate.value, inFormURL, inDate.value);
-	//alert(URL);
-	var shortURL = shorturl(URL);
-	alert(shortURL);
-	qrcode.makeCode(shortURL);
+	window.open(URL, "_blank");
+	// var shortURL = shorturl(URL);
+	// //alert(shortURL);
+	// qrcode.makeCode(shortURL);
 }
 //
 // makeCode();
