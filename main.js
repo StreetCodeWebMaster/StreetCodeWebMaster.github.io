@@ -5,8 +5,7 @@ function getrandom(){
   return random_string;
 }
 
-function geturl(){
-  var url = document.getElementById(“URL”).value;
+function geturl(url){
   var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
   if(!protocol_ok){
     newurl = "http://"+url;
@@ -23,7 +22,7 @@ function genhash(){
   }
 }
 
-function shorturl(){
+function shorturl(url){
   var longurl = geturl();
   genhash();
   send_request(longurl);
